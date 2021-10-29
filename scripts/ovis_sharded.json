@@ -1,0 +1,126 @@
+{
+    "sharded": true,
+    "vindexes": {
+        "hash": {
+            "type": "hash"
+        },
+        "unicode_loose_md5": {
+            "type": "unicode_loose_md5"
+        }
+    },
+    "tables": {
+        "job_hosts":{
+         "column_vindexes": [
+                {
+                    "column": "jobid",
+                    "name": "unicode_loose_md5"
+                }
+            ]
+        },
+        "ovis_metrics": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "jobs": {
+         "column_vindexes": [
+                {
+                    "column": "jobid",
+                    "name": "unicode_loose_md5"
+                }
+            ]
+        },
+        "tests": {
+         "column_vindexes": [
+                {
+                    "column": "testName",
+                    "name": "unicode_loose_md5"
+                }
+            ]
+        },
+        "testFails": {
+         "column_vindexes": [
+                {
+                    "column": "testName",
+                    "name": "unicode_loose_md5"
+                }
+            ]
+        },
+        "meminfo": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "opa2": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "lustre_client": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "procnfs": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "procnetdev": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "procstat_72": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "gw_sysclassib": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },
+        "loadavg": {
+         "column_vindexes": [
+                {
+                    "column": "CompId",
+                    "name": "hash"
+                }
+            ]
+        },			
+        "metrics_md": {
+         "column_vindexes": [
+               {
+                    "column": "name",
+                    "name": "unicode_loose_md5"
+                }
+            ]
+        }
+
+    }
+}
