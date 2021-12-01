@@ -7,6 +7,8 @@ CREATE TABLE `lustre_client` (
   `CompId` bigint(20) unsigned NOT NULL,
   `jobid` bigint(20) NOT NULL,
   `fs_name` VARCHAR(64),
+  `read_bytes_rate` bigint(20) NOT NULL,
+  `write_bytes_rate` bigint(20) NOT NULL,
   `open_rate` bigint(20) NOT NULL,
   `close_rate` bigint(20) NOT NULL,
   `seek_rate` bigint(20) NOT NULL,
