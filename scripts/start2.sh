@@ -33,7 +33,6 @@ fi
 # start vtctld
 CELL=zone1 "./scripts/vtctld-up.sh"
 
-# start vttablets for keyspace commerce
 for i in 100 101 102; do
         CELL=zone1 TABLET_UID=$i ./scripts/mysqlctl-up.sh
         SHARD=-80 CELL=zone1 KEYSPACE=ISC TABLET_UID=$i ./scripts/vttablet-up.sh
@@ -41,9 +40,8 @@ done
 
 for i in 200 201 202; do
         CELL=zone1 TABLET_UID=$i ./scripts/mysqlctl-up.sh
-        SHARD=80- CELL=zone1 KEYSPACE=ISC TABLET_UID=$i ./scripts/vttablet-up.sh
+        SHART=80- CELL=zone1 KEYSPACE=ISC TABLET_UID=$i ./scripts/vttablet-up.sh
 done
-
 
 
 for i in 300 301 302; do
@@ -52,36 +50,15 @@ for i in 300 301 302; do
 done
 
 
-
-
 sleep 15
 
 # set one of the replicas to master
+#vtctldclient PlannedReparentShard ISC/-80 --new-primary zone1-100
+#vtctldclient PlannedReparentShard ISC/80- --new-primary zone1-200
+#vtctldclient PlannedReparentShard ISC/0 --new-primary zone1-300
 vtctldclient InitShardPrimary --force ISC/-80 zone1-100
 vtctldclient InitShardPrimary --force ISC/80- zone1-200
 vtctldclient InitShardPrimary --force WORK/0 zone1-300
-
-# create the schema
-vtctlclient ApplySchema -sql-file ovis.sql ISC
-vtctlclient ApplySchema -sql-file jobs.sql ISC
-vtctlclient ApplySchema -sql-file job_hosts.sql ISC
-vtctlclient ApplySchema -sql-file tests.sql ISC
-vtctlclient ApplySchema -sql-file testFails.sql ISC
-vtctlclient ApplySchema -sql-file metrics_md.sql ISC
-vtctlclient ApplySchema -sql-file meminfo.sql ISC
-vtctlclient ApplySchema -sql-file opa2.sql ISC
-vtctlclient ApplySchema -sql-file lustre_client.sql ISC
-vtctlclient ApplySchema -sql-file procnfs.sql ISC
-vtctlclient ApplySchema -sql-file procnetdev.sql ISC
-vtctlclient ApplySchema -sql-file procstat_72.sql ISC
-vtctlclient ApplySchema -sql-file gw_sysclassib.sql ISC
-vtctlclient ApplySchema -sql-file loadavg.sql ISC
-vtctlclient ApplySchema -sql-file procnet.sql ISC
-vtctlclient ApplySchema -sql-file lnet_stats.sql ISC
-
-# create the vschema
-vtctlclient ApplyVSchema -vschema_file ovis_sharded.json ISC
-vtctlclient ApplyVSchema -vschema_file work.json WORK
 
 # start vtgate
 CELL=zone1 "scripts/vtgate-up.sh"
