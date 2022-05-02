@@ -40,7 +40,7 @@ done
 
 for i in 200 201 202; do
         CELL=zone1 TABLET_UID=$i ./scripts/mysqlctl-up.sh
-        SHART=80- CELL=zone1 KEYSPACE=ISC TABLET_UID=$i ./scripts/vttablet-up.sh
+        SHARD=80- CELL=zone1 KEYSPACE=ISC TABLET_UID=$i ./scripts/vttablet-up.sh
 done
 
 
