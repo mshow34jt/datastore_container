@@ -78,6 +78,7 @@ vtctlclient ApplySchema -sql-file gw_sysclassib.sql ISC
 vtctlclient ApplySchema -sql-file loadavg.sql ISC
 vtctlclient ApplySchema -sql-file procnet.sql ISC
 vtctlclient ApplySchema -sql-file lnet_stats.sql ISC
+vtctlclient ApplySchema -sql-file coretemp.sql ISC
 
 # create the vschema
 vtctlclient ApplyVSchema -vschema_file ovis_sharded.json ISC

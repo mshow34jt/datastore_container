@@ -113,15 +113,7 @@
                 }
             ]
         },			
-        "procnet": {
-         "column_vindexes": [
-                {
-                    "column": "CompId",
-                    "name": "hash"
-                }
-             ]
-        },
-        "lnet_stats": {
+        "coretemp": {
          "column_vindexes": [
                 {
                     "column": "CompId",
