@@ -8,6 +8,7 @@ create table tests(
  threshold bigint(20),
  calc varchar(64),
  grouping varchar(64),
+ filters varchar(128),
  PRIMARY KEY (`id`),
  KEY `testName` (`testName`)
 ) ENGINE=InnoDB
