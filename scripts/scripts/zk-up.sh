@@ -54,8 +54,8 @@ echo "Started zk servers."
 set +e
 # shellcheck disable=SC2086
 vtctl $TOPOLOGY_FLAGS AddCellInfo \
-  -root /vitess/$cell \
-  -server_address $ZK_SERVER \
+  --root /vitess/$cell \
+  --server_address $ZK_SERVER \
   $cell
 set -e
 

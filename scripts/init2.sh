@@ -62,27 +62,27 @@ vtctldclient InitShardPrimary --force ISC/80- zone1-200
 vtctldclient InitShardPrimary --force WORK/0 zone1-300
 
 # create the schema
-vtctlclient ApplySchema -sql-file ovis.sql ISC
-vtctlclient ApplySchema -sql-file jobs.sql ISC
-vtctlclient ApplySchema -sql-file job_hosts.sql ISC
-vtctlclient ApplySchema -sql-file tests.sql ISC
-vtctlclient ApplySchema -sql-file testFails.sql ISC
-vtctlclient ApplySchema -sql-file metrics_md.sql ISC
-vtctlclient ApplySchema -sql-file meminfo.sql ISC
-vtctlclient ApplySchema -sql-file opa2.sql ISC
-vtctlclient ApplySchema -sql-file lustre_client.sql ISC
-vtctlclient ApplySchema -sql-file procnfs.sql ISC
-vtctlclient ApplySchema -sql-file procnetdev.sql ISC
-vtctlclient ApplySchema -sql-file procstat_72.sql ISC
-vtctlclient ApplySchema -sql-file gw_sysclassib.sql ISC
-vtctlclient ApplySchema -sql-file loadavg.sql ISC
-vtctlclient ApplySchema -sql-file procnet.sql ISC
-vtctlclient ApplySchema -sql-file lnet_stats.sql ISC
-vtctlclient ApplySchema -sql-file coretemp.sql ISC
+vtctlclient ApplySchema --sql-file ovis.sql ISC
+vtctlclient ApplySchema --sql-file jobs.sql ISC
+vtctlclient ApplySchema --sql-file job_hosts.sql ISC
+vtctlclient ApplySchema --sql-file tests.sql ISC
+vtctlclient ApplySchema --sql-file testFails.sql ISC
+vtctlclient ApplySchema --sql-file metrics_md.sql ISC
+vtctlclient ApplySchema --sql-file meminfo.sql ISC
+vtctlclient ApplySchema --sql-file opa2.sql ISC
+vtctlclient ApplySchema --sql-file lustre_client.sql ISC
+vtctlclient ApplySchema --sql-file procnfs.sql ISC
+vtctlclient ApplySchema --sql-file procnetdev.sql ISC
+vtctlclient ApplySchema --sql-file procstat_72.sql ISC
+vtctlclient ApplySchema --sql-file gw_sysclassib.sql ISC
+vtctlclient ApplySchema --sql-file loadavg.sql ISC
+vtctlclient ApplySchema --sql-file procnet.sql ISC
+vtctlclient ApplySchema --sql-file lnet_stats.sql ISC
+vtctlclient ApplySchema --sql-file coretemp.sql ISC
 
 # create the vschema
-vtctlclient ApplyVSchema -vschema_file ovis_sharded.json ISC
-vtctlclient ApplyVSchema -vschema_file work.json WORK
+vtctlclient ApplyVSchema --vschema-file ovis_sharded.json ISC
+vtctlclient ApplyVSchema --vschema-file work.json WORK
 
 # start vtgate
 CELL=zone1 "scripts/vtgate-up.sh"

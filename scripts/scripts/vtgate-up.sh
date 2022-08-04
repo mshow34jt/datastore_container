@@ -28,17 +28,17 @@ mysql_server_socket_path="/tmp/mysql.sock"
 # shellcheck disable=SC2086
 vtgate \
   $TOPOLOGY_FLAGS \
-  -log_dir $VTDATAROOT/tmp \
-  -port $web_port \
-  -grpc_port $grpc_port \
-  -mysql_server_port $mysql_server_port \
-  -mysql_server_socket_path $mysql_server_socket_path \
-  -cell $cell \
-  -cells_to_watch $cell \
-  -tablet_types_to_wait MASTER,REPLICA \
-  -service_map 'grpc-vtgateservice' \
-  -pid_file $VTDATAROOT/tmp/vtgate.pid \
-  -mysql_auth_server_impl none \
+  --log_dir $VTDATAROOT/tmp \
+  --port $web_port \
+  --grpc_port $grpc_port \
+  --mysql_server_port $mysql_server_port \
+  --mysql_server_socket_path $mysql_server_socket_path \
+  --cell $cell \
+  --cells_to_watch $cell \
+  --tablet_types_to_wait MASTER,REPLICA \
+  --service_map 'grpc-vtgateservice' \
+  --pid_file $VTDATAROOT/tmp/vtgate.pid \
+  --mysql_auth_server_impl none \
   > $VTDATAROOT/tmp/vtgate.out 2>&1 &
 
 # Block waiting for vtgate to be listening

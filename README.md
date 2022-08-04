@@ -2,7 +2,11 @@
 
 
 git clone https://github.com/vitessio/vitess.git
+
 cd vitess
+To ensure the same soure build as tested.... 
+git checkout 853d88d4eb3928d132d2cb8f717c062f4e9bb73a
+
 make docker_local
 
 singularity build vitess.sif docker-daemon://vitess/local:latest
