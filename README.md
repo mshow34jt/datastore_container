@@ -4,7 +4,7 @@
 git clone https://github.com/vitessio/vitess.git  
 
 cd vitess  
-To ensure the same soure build as tested....  
+To ensure the same source build as tested....  
 git checkout 853d88d4eb3928d132d2cb8f717c062f4e9bb73a  
 
 make docker_local  
@@ -18,7 +18,8 @@ mkdir {storage dir}/vitess
 midir {storage dir}/vtdataroot.16  
 cp -a datastore_container/scripts {storage dir}/vitess  
 
-singularity instance start  --bind {storage dir}/vtdataroot.16:/vt/vtdataroot --bind {storage dir}/vitess/scripts:/vt/local --bind {storage dir}:{storage dir} {storage dir}/images/vitess.sif vitess  
+singularity instance start  --bind {storage dir}/vtdataroot.16:/vt/vtdataroot --bind {storage dir}/vitess/scripts:/vt/local --bind {storage dir}:{storage dir} {storage dir}/images/vitess.sif vitess 
+(the mapping of {storage dir} to itself is necessary if the data roots for each shard are links)
 
  singularity run instance://vitess bash  
  cd /vt/local  
