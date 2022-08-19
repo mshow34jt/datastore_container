@@ -1,5 +1,8 @@
 # datastore_container
 
+Build dependancies are described here:  
+https://vitess.io/docs/14.0/contributing/build-on-centos/  
+and to build the docker image, it was tested with 20.10.7  
 
 git clone https://github.com/vitessio/vitess.git  
 
