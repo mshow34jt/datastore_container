@@ -2,7 +2,8 @@
 
 Build dependancies are described here:  
 https://vitess.io/docs/14.0/contributing/build-on-centos/  
-and to build the docker image, it was tested with 20.10.7 
+and to build the docker image, it was tested with 20.10.7  
+
 For running a 16 way sharded database, limits for the user running will need to be changed with:
 sysctl -w fs.aio-max-nr=1024000
 
