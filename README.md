@@ -20,12 +20,13 @@ cp vitess.sif {storage dir}/images
 
 
 git clone https://github.com/mshow34jt/datastore_container  
-mkdir {storage dir}/vitess  
-midir {storage dir}/vtdataroot.16  
-cp -a datastore_container/scripts {storage dir}/vitess  
+mkdir ${storage_dir}/vitess  
+mkdir ${storage_dir}/vtdataroot.16  
+mkdir ${storage_dir}/tmp  
+cp -a datastore_container/scripts ${storage_dir}/vitess  
 
-singularity instance start  --bind {storage dir}/vtdataroot.16:/vt/vtdataroot --bind {storage dir}/vitess/scripts:/vt/local --bind {storage dir}:{storage dir} {storage dir}/images/vitess.sif vitess 
-(the mapping of {storage dir} to itself is necessary if the data roots for each shard are links)
+singularity instance start  --bind ${storage_dir}/vtdataroot.16:/vt/vtdataroot --bind ${storage_dir}/vitess/scripts:/vt/local --bind ${storage_dir}/tmp:/tmp --bind ${storage_dir}:${storage_dir} ${storage_dir}/images/vitess.sif vitess 
+(the mapping of ${storage_dir} to itself is necessary if the data roots for each shard are links)  
 
  singularity run instance://vitess bash  
  cd /vt/local  
